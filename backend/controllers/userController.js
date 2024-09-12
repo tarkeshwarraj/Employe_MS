@@ -99,5 +99,40 @@ const loginUser = async(req, res, isAdmin = false) => {
     }
 };
 
+const updateUser = async (req, res) => {
+    const { userId } = req.body;
 
-export {registerUser, loginUser};
+    const { address, pinCode, qualification,mobileNumber, fieldOfStudy, experience, jobCategory, salaryRange } = req.body;
+
+    res.json({message: "I am the update function"})
+    try{
+        //UserId got or not
+        if(!userId) {
+            return res.status(400).json({success: false, message: "User ID is required"});
+        }
+
+        // Find user by ID and update fields
+        const updatedUser = await userModel.findByIdAndUpdate(
+            userId,
+            { mobileNumber, qualification, address, fieldOfStudy, experience, jobCategory, salaryRange, pinCode },
+           // { new: true, runValidators: true } // Return the updated document and run validation
+        );
+
+        //Check if User was found and updated
+        if(!updatedUser) {
+            return res.status(404).json({success: false, message: "User not found"});
+        }
+
+        //Response with updated user details
+        res.status(200).json({success: true, user: updateUser});
+
+
+    }catch(error){
+        console.log("Error during user update:", error);
+        res.status(500).json({ success: false, message: "Server error"});
+
+    }
+}
+
+
+export {registerUser, loginUser, updateUser};

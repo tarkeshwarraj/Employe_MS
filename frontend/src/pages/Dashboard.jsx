@@ -1,6 +1,5 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom';
-import Header from '../components/Header.jsx';
 import Sidebar from '../components/Sidebar.jsx';
 
 const Dashboard = () => {
@@ -17,7 +16,6 @@ const Dashboard = () => {
 
   return (
     <div className='border'>
-      <Header />
       <Sidebar />
 
     </div>
