@@ -15,7 +15,7 @@ const createToken = (id,role) => {
 const registerUser = async(req, res) => {
     //destructure name,email,password,role and gender
 
-    const {name,password,email,role = 'user',gender} = req.body;
+    const {name,password,email,role = 'Applicant User',gender} = req.body;
 
     try{
         //checking the user is already exist or not
@@ -102,9 +102,9 @@ const loginUser = async(req, res, isAdmin = false) => {
 const updateUser = async (req, res) => {
     const { userId } = req.body;
 
-    const { address, pinCode, qualification,mobileNumber, fieldOfStudy, experience, jobCategory, salaryRange } = req.body;
+    //agar aap yaha user and email nhi doga tho frontend sa user bhejo ya email update nhi hogi
+    const { name, email, address, pinCode, qualification,mobileNumber, fieldOfStudy, experience, jobCategory, salaryRange, age, gender } = req.body;
 
-    res.json({message: "I am the update function"})
     try{
         //UserId got or not
         if(!userId) {
@@ -114,8 +114,8 @@ const updateUser = async (req, res) => {
         // Find user by ID and update fields
         const updatedUser = await userModel.findByIdAndUpdate(
             userId,
-            { mobileNumber, qualification, address, fieldOfStudy, experience, jobCategory, salaryRange, pinCode },
-           // { new: true, runValidators: true } // Return the updated document and run validation
+            {name,email, mobileNumber, qualification, address, fieldOfStudy, experience, jobCategory, salaryRange, pinCode, age, gender },
+           { new: true, runValidators: true } // Return the updated document and run validation
         );
 
         //Check if User was found and updated
@@ -124,7 +124,8 @@ const updateUser = async (req, res) => {
         }
 
         //Response with updated user details
-        res.status(200).json({success: true, user: updateUser});
+        res.status(200).json({success: true, user: updatedUser});
+        
 
 
     }catch(error){
@@ -133,6 +134,31 @@ const updateUser = async (req, res) => {
 
     }
 }
+ 
+    const getUser = async(req, res) =>{
+        const {userId} = req.body;
+
+        try{
+            if(!userId){
+                return res.status(400).json({success: false, message: "User Id is required"})
+            }
+
+            //Find user by Id
+            const user = await userModel.findById(userId);
+            if(!user){
+                return res.status(404).json({ success: false, message: "User not found"});
+            }
+
+            //Response with user details
+            res.status(200).json({success: true, user});
+
+            console.log(user);
+        }catch(error){
+
+        }
+
+    }
 
 
-export {registerUser, loginUser, updateUser};
+
+export {registerUser, loginUser, updateUser, getUser};

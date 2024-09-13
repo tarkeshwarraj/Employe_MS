@@ -30,5 +30,5 @@ export const StoreProvider = ({ children }) => {
     );
 };
 
-//Custom hook for using the context
+//Custom hook for using the context  useContext already used here
 export const useStoreContext = () => useContext(StoreContext);

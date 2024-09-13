@@ -1,6 +1,5 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom';
-import Sidebar from '../components/Sidebar.jsx';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -15,9 +14,8 @@ const Dashboard = () => {
 
 
   return (
-    <div className='border'>
-      <Sidebar />
-
+    <div className=''>
+      This si Dashboard
     </div>
   )
 }
