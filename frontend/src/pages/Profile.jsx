@@ -94,7 +94,7 @@ const Profile = () => {
 
   return (
     <div className="flex flex-row justify-center">
-      <div className="border grow-1 shrink-1 basis-8/12 border-orange-50 p-4 md:p-10 m-10">
+      <div className="border grow-1 shrink-1 basis-10/12 md:basis-8/12 border-orange-50 md:p-4 p-5 md:p-10 m-6 sm:m-10">
         <div className="box">
           <h2 className="text-center pb-5">User Profile</h2>
 

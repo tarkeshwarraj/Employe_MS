@@ -41,8 +41,8 @@ const Sidebar = () => {
     
       <nav id="sidebar" className={`${sidebarClosed ? "close" : ""}`}>
         <ul className="list-none">
-          <li className="flex float-end w-full">
-            <button onClick={toggleSidebar} id="toggle-btn" >
+          <li className="flex justify-between w-full">
+            <button onClick={toggleSidebar} id="toggle-btn">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24px"

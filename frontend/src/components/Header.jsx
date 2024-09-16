@@ -1,8 +1,6 @@
 import React from 'react';
 import {useStoreContext } from '../StoreContext/StoreContext';
 
-
-
 const Header = () => {
   
   const {token, setToken} = useStoreContext();
@@ -16,10 +14,10 @@ const Header = () => {
   };
 
   return (
-    <div className=''>
-    <header className='header-section flex flex-row h-20 justify-between items-center px-4'>
+    <div className='pb-2 mb-2 border-b-white'>
+    <header className='header-section flex flex-row h-20 justify-between items-center px-4 pt-4 sm:pt-0'>
         <div className='logo w-full h-full flex items-center'>
-            <span className='text-2xl font-bold'>This is header</span>
+            <span className='text-2xl font-bold'>LOGO</span>
         </div>
         {token ? (<div className="items-center">
           <p onClick={removeToken} className="cursor-pointer">LogOut</p>

@@ -49,11 +49,11 @@ const LoginPage = () => {
       // Save token to browser
       if (response.data.success) {
         //Save token to the browser storage
-        setToken(response.data.token);
         localStorage.setItem("token", response.data.token);
 
         //Redirect to dashboard
          navigate("/dashboard");
+
          console.log(response.data);
       } else {
         console.log(response.data.message);
