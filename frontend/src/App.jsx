@@ -7,6 +7,7 @@ import PrivateRoute from "./components/PrivateRoute.jsx";
 import Header from "./components/Header.jsx";
 import Profile from "./pages/Profile.jsx";
 import Sidebar from "./components/Sidebar.jsx";
+import Attendance from "./pages/Attendance.jsx";
 
 function App() {
   const location = useLocation(); //get the current location
@@ -14,7 +15,8 @@ function App() {
   //Determine whether to show the sidebar
   const showSidebar =
     location.pathname === "/dashboard" ||
-    location.pathname === "/profile";
+    location.pathname === "/profile" ||
+    location.pathname === "/attendance";
 
   return (
     <div className="app-layout w-full h-full">
@@ -30,6 +32,10 @@ function App() {
           <Route
             path="/profile"
             element={<PrivateRoute element={<Profile />} />}
+          />
+          <Route
+            path="/attendance"
+            element={<PrivateRoute element={<Attendance />} />}
           />
         </Routes>
       </div>

@@ -2,6 +2,7 @@ import express from 'express';
 import {registerUser, loginUser, updateUser, getUser} from "../controllers/userController.js";
 import authMiddleware from '../middleware/roleMiddleware.js'
 
+
 const userRouter = express.Router();
 
 //Route to handle user registration
