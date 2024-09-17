@@ -14,7 +14,7 @@ export const StoreProvider = ({ children }) => {
 
     //set the backend URL from the enviroment variable or configuration file
     useEffect(() => {
-        const backendUrl = 'https://employe-ms-backend.onrender.com';
+        const backendUrl = 'https://employe-ms-back.onrender.com';
         setUrl(backendUrl);
 
         const checkAttendance = async() =>{
