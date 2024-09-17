@@ -48,7 +48,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="px-6 sm:px-20">
+    <div className="px-6 sm:px-20 myColor">
       <div className="flex justify-between">
         <p>
           <span className="text-2xl">Hi</span> Arman

@@ -93,22 +93,22 @@ const Profile = () => {
   }, [url]);
 
   return (
-    <div className="flex flex-row justify-center">
+    <div className="flex flex-row justify-center ">
       <div className="border grow-1 shrink-1 basis-10/12 md:basis-8/12 border-orange-50 md:p-4 p-5 md:p-10 m-6 sm:m-10">
         <div className="box">
-          <h2 className="text-center pb-5">User Profile</h2>
+          <h2 className=" myColor text-center pb-5">User Profile</h2>
 
           <div className="w-full h-full flex gap-3 mb-3 md:mb-6 justify-center">
             <img
               src=""
               alt="Image"
-              className="images w-24 h-24 md:w-32 md:h-32 border border-red-100 rounded-full object-cover"
+              className="myColor images w-24 h-24 md:w-32 md:h-32 border border-red-100 rounded-full object-cover"
             />
           </div>
 
           <div className="flex gap-3 pb-3 md:pb-6">
             <input
-              className="py-1.5 px-3.5 md:mx-4 w-full rounded-md text-black"
+              className="py-1.5 px-3.5 md:mx-4 w-full rounded-md"
               type="text"
               value={formData.name}
               name="name"
@@ -116,7 +116,7 @@ const Profile = () => {
               onChange={handleInputChange}
             />
             <input
-              className="py-1.5 px-3.5 md:mx-4 w-full rounded-md text-black"
+              className="py-1.5 px-3.5 md:mx-4 w-full rounded-md"
               type="text"
               name="mobileNumber"
               value={formData.mobileNumber}

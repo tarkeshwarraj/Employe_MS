@@ -25,11 +25,11 @@ export const markAttendance = async (req, res) => {
         userId,
         year,
         month,
-        attendance: { [day]: status }, //Initialize empty object for days
+        attendance: { [dayString]: status }, //Initialize empty object for days
       });
     } else {
       //Update attendance for the specific day
-      attendance.attendance.set(day, status); //e.g. attendance.set ("01", "present")
+      attendance.attendance.set(dayString, status); //e.g. attendance.set ("01", "present")
     }
 
     await attendance.save();
@@ -40,22 +40,7 @@ export const markAttendance = async (req, res) => {
   }
 };
 
-//Get Monthly Attendance for a User
-export const getMonthlyAttendance = async (req, res) => {
-  const { userId } = req.body;
-  const { year, month } = req.params;
-  try {
-    const attendance = await Attendance.findOne({ userId, year, month });
-    if (!attendance) {
-      return res.status(404).json({ message: "Attendance not found" });
-    }
-    res.status(200).json(attendance);
-  } catch (error) {
-    console.error("Error fetching attendance:", error);
-    res.status(500).json({ error: "Error fetching attendance" });
-  }
-};
-
+//Attendance Marked
 export const checkAttendance = async (req, res) => {
   
   const { userId } = req.body;
@@ -76,4 +61,39 @@ export const checkAttendance = async (req, res) => {
     res.status(500).json({message: 'Error checking attendance'});
   }
 
+};
+
+// Get Monthly Attendance for a User
+export const getMonthlyAttendance = async (req, res) => {
+  const { userId } = req.body; // Extract userId from the request body
+  const { year, month } = req.params; // Extract year and month from params
+
+  // Check if required fields are provided
+  if (!userId || !year || !month) {
+    return res.status(400).json({ error: "Missing required parameters" });
+  }
+
+  try {
+    // Fetch the attendance for the specified user, year, and month
+    const attendance = await Attendance.findOne({ userId, year, month });
+
+    if (!attendance) {
+      return res.status(200).json({
+        attendance:{}, //Empty attendance data for the given month
+        message: "Attendance not found",
+      });
+    }
+
+    // Send back attendance data
+    res.status(200).json({
+      userId: attendance.userId,
+      year: attendance.year,
+      month: attendance.month,
+      attendance: attendance.attendance, // Returning only the attendance details
+    });
+
+  } catch (error) {
+    console.error("Error fetching attendance:", error);
+    res.status(500).json({ error: "Error fetching attendance" });
+  }
 };

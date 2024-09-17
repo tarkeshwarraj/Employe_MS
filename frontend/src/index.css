@@ -10,6 +10,7 @@
   --text-clr: #e6e6ef;
   --accent-clr: #5e63ff;
   --secondary-text-clr: #b0b3c1;
+  --tailwind-clr: #0F172A;
 }
 
 * {
@@ -26,7 +27,9 @@
   body {
     min-height: 100vh;
     min-height: 100dvh;
-    background-color: var(--base-clr);
-    color: var(--text-clr);
+    background-color: var(--tailwind-clr);
   }
   
+  .myColor{
+    color: var(--text-clr);
+  }
