@@ -62,10 +62,10 @@ const Attendance = () => {
   };
 
   return (
-    <div className="attendance-container p-8 bg-gradient-to-r from-indigo-400 via-purple-500 min-h-screen">
+    <div className="attendance-container p-8 bg-gradient-to-r from-indigo-400 via-purple-500 min-h-screen overflow-x-hidden">
       <h2 className="text-3xl font-extrabold text-white text-center mb-8">Attendance History</h2>
 
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-4xl mx-auto">
+      <div className="bg-white shadow-lg rounded-lg p-1 sm:p-8 max-w-4xl mx-auto">
         <Calendar
         tileContent={tileContent} //Function to customize each til's content
         className="mx-auto text-lg border-none" //center the calender
