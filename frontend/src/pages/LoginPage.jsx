@@ -36,7 +36,7 @@ const LoginPage = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    let newURL = "http://localhost:3000";
+    let newURL = url;
     if (currState === "Login") {
       newURL += "/api/user/login";
     } else {
