@@ -67,6 +67,7 @@ const LoginPage = () => {
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center">
+      <h1>change</h1>
         <form
           onSubmit={onLogin}
           className="relative bg-white rounded-lg shadow-lg max-w-md w-full p-6 space-y-6 animate-fadeIn m-4 sm:mx-6"
